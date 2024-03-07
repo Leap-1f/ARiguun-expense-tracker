@@ -2,25 +2,23 @@ import { LogoAndNAme } from "@/Components/Layouts/LogoAndName";
 import Link from "next/link";
 import { useState } from "react";
 
-const { users, setUsers } = useState("");
-const API_ENDPOINT = "http://localhost:3033";
-const fetchUsers = async () => {
-  try {
-    const res = await fetch(API_ENDPOINT, {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify({ name: name }),
-    });
-    const data = await res.json();
-    setUsers(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-const signUp = () => {
-  fetchUsers();
-};
 const login = () => {
+  const API_ENDPOINT = "http://localhost:3033/users";
+  const login = async () => {
+    try {
+      const res = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="w-screen h-screen flex">
       <div className="w-6/12 flex justify-center items-center">
@@ -71,7 +69,7 @@ const login = () => {
               <input type="password" className="grow" value="password" />
             </label>
             <Link
-              onClick={signUp}
+              // onClick={signUp}
               href={"/signUp"}
               class="btn bg-[#3b82f6] border-none text-white rounded-full  h-[70px]  font-normal	text-xl"
             >
