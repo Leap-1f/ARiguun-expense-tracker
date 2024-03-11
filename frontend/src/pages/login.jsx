@@ -1,10 +1,15 @@
 import { LogoAndNAme } from "@/Components/Layouts/LogoAndName";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
-const login = () => {
-  const API_ENDPOINT = "http://localhost:3033/users";
-  const login = async () => {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const API_ENDPOINT = "http://localhost:3033/login";
+  const router = useRouter();
+
+  const fetchData = async () => {
     try {
       const res = await fetch(API_ENDPOINT, {
         method: "POST",
@@ -12,13 +17,25 @@ const login = () => {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ email, password }),
       });
-      const data = await res.json();
+
+      if (res.ok) {
+        // If login is successful, redirect to http://localhost:3000/
+        router.push("http://localhost:3000/loading");
+      } else {
+        // Handle unsuccessful login
+        console.log("Login failed");
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
+  const loginGo = () => {
+    fetchData();
+  };
+
   return (
     <div className="w-screen h-screen flex">
       <div className="w-6/12 flex justify-center items-center">
@@ -28,7 +45,7 @@ const login = () => {
           </div>
           <div className="flex flex-col items-center gap-2">
             <h1 className="text-black text-4xl">Welcome back</h1>
-            <p className=" text-gray-600 text-lg">
+            <p className="text-gray-600 text-lg">
               Welcome back, Please enter your details
             </p>
           </div>
@@ -45,7 +62,7 @@ const login = () => {
               </svg>
               <input
                 onChange={(event) => {
-                  setData(event.target.value);
+                  setEmail(event.target.value);
                 }}
                 type="text"
                 className="grow"
@@ -66,19 +83,27 @@ const login = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <input type="password" className="grow" value="password" />
+              <input
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+                type="password"
+                className="grow"
+                value={password}
+              />
             </label>
-            <Link
-              // onClick={signUp}
-              href={"/signUp"}
-              class="btn bg-[#3b82f6] border-none text-white rounded-full  h-[70px]  font-normal	text-xl"
+            <button
+              onClick={loginGo}
+              className="btn bg-[#3b82f6] border-none text-white rounded-full h-[70px] font-normal text-xl"
             >
               Log in
-            </Link>
+            </button>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="text-black">Dont`t have account?</p>
-            <button className="btn btn-link ">Sign up</button>
+            <p className="text-black">Don't have an account?</p>
+            <Link href={"/signUp"} className="btn btn-link ">
+              Sign up
+            </Link>
           </div>
         </div>
       </div>
@@ -86,4 +111,5 @@ const login = () => {
     </div>
   );
 };
-export default login;
+
+export default Login;

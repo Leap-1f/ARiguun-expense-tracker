@@ -31,6 +31,23 @@ app.get("/users", async (req, res) => {
   console.log(data);
   res.send(data);
 });
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const data =
+      await sql`SELECT * FROM users WHERE email=${email} AND password=${password}`;
+    if (data && data.length > 0) {
+      // If login is successful, redirect to http://localhost:3000/
+      res.redirect("http://localhost:3000/loading");
+    } else {
+      res.send("<p>Login failed</p>");
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.post("/users", async (req, res) => {
   const { name, email, password } = req.body;
   console.log(req.body);
@@ -43,7 +60,7 @@ app.post("/users", async (req, res) => {
 // app.post("/users/createTable", async (req, res) => {
 //   const drop =
 //     await sql`INSERT INTO users(name,email) VALUES('Boorchi',' ariguun10@gmail.com') RETURNING *
-//   `;
+//   `;s
 //   res.send(drop);
 // });
 // app.delete("/users/dropTable", async (req, res) => {

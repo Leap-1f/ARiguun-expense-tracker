@@ -16,7 +16,7 @@ const signUp = () => {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
     } catch (error) {
@@ -114,7 +114,9 @@ const signUp = () => {
           </div>
           <div className="flex gap-2 items-center">
             <p className="text-black">Already have an account?</p>
-            <button className="btn btn-link ">Sign in</button>
+            <Link href={"/login"} className="btn btn-link ">
+              Sign in
+            </Link>
           </div>
         </div>
       </div>
