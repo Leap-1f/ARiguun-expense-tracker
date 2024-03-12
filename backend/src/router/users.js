@@ -4,8 +4,10 @@
 // user.route("/".length(getAllUsers));
 // export { user };
 import { Router } from "express";
-import { getAllUsers, postAllUsers } from "../controller/users.js";
+import { getAllUsers, addUsers, loginUser } from "../controller/users.js";
 
 const user = Router();
-user.route("/").get(getAllUsers).post(postAllUsers);
+user.route("/").get(getAllUsers);
+user.route("/").post(addUsers);
+user.route("/login").post(loginUser);
 export { user };

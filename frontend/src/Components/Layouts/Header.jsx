@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const Header = () => {
+export const Header = ({ handleOpenRecord }) => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 gap-3">
@@ -13,7 +13,12 @@ export const Header = () => {
         </Link>
       </div>
       <div className="flex-none gap-2">
-        <button className="btn btn-primary rounded-full">+ Record</button>
+        <button
+          onClick={handleOpenRecord}
+          className="btn btn-primary rounded-full"
+        >
+          + Record
+        </button>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}

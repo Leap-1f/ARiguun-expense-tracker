@@ -7,14 +7,24 @@ import {
   GraphicBox02,
   LastRecords,
 } from "@/Components/Layouts/index";
-import Chart from "chart.js/auto";
+import { useState } from "react";
 
 const Home = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleCancelClick = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleOpenRecord = () => {
+    setIsModalVisible(true);
+  };
+
   return (
     <div className=" ">
       <div className="flex justify-center w-screen">
         <div className="w-[1440px] flex ">
-          <Header />
+          <Header handleOpenRecord={handleOpenRecord} />
         </div>
       </div>
       <div className="bg-[#191b1d] h-screen flex justify-center">

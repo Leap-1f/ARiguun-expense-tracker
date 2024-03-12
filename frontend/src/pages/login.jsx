@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const API_ENDPOINT = "http://localhost:3033/login";
+  const API_ENDPOINT = "http://localhost:3033/users/login";
   const router = useRouter();
 
   const fetchData = async () => {
@@ -17,14 +17,12 @@ const Login = () => {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email }),
       });
 
       if (res.ok) {
-        // If login is successful, redirect to http://localhost:3000/
         router.push("http://localhost:3000/loading");
       } else {
-        // Handle unsuccessful login
         console.log("Login failed");
       }
     } catch (error) {
