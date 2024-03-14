@@ -1,6 +1,11 @@
 import Link from "next/link";
-
-export const Header = ({ handleOpenRecord }) => {
+import { Fragment, useContext, useState } from "react";
+import { Contex } from "../utils/context";
+import { MiniRecord } from "../Modal/ModalExpense";
+export const Header = ({ modalExpense, setModalExprense }) => {
+  const handleOpenExpenseModal = () => {
+    setModalExprense(true);
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 gap-3">
@@ -14,7 +19,7 @@ export const Header = ({ handleOpenRecord }) => {
       </div>
       <div className="flex-none gap-2">
         <button
-          onClick={handleOpenRecord}
+          onClick={handleOpenExpenseModal}
           className="btn btn-primary rounded-full"
         >
           + Record

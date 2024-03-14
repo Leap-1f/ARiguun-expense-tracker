@@ -7,24 +7,13 @@ import {
   GraphicBox02,
   LastRecords,
 } from "@/Components/Layouts/index";
-import { useState } from "react";
-
+import { ModalCategory } from "@/Components/Modal/ModalCategory";
 const Home = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const handleCancelClick = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleOpenRecord = () => {
-    setIsModalVisible(true);
-  };
-
   return (
     <div className=" ">
       <div className="flex justify-center w-screen">
         <div className="w-[1440px] flex ">
-          <Header handleOpenRecord={handleOpenRecord} />
+          <Header />
         </div>
       </div>
       <div className="bg-[#191b1d] h-screen flex justify-center">
@@ -43,6 +32,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <ModalCategory></ModalCategory>
     </div>
   );
 };
