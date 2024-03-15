@@ -6,8 +6,8 @@ import {
   GraphicBox01,
   GraphicBox02,
   LastRecords,
-} from "@/Components/Layouts/index";
-import { ModalCategory } from "@/Components/Modal/ModalCategory";
+} from "@/components/Layouts/index";
+import { ModalCategory } from "@/components/Modal/ModalCategory";
 const Home = () => {
   return (
     <div className=" ">

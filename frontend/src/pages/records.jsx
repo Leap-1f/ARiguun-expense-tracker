@@ -1,11 +1,13 @@
-import { Header } from "@/Components/Layouts";
-import { Records, RecordsWithBg } from "@/Components/Layouts/Records";
+import { Header } from "@/components/Layouts";
+import { Records, RecordsWithBg } from "@/components/Layouts/Records";
 import { Fragment, useState } from "react";
-import { MiniRecord } from "@/Components/Modal/ModalExpense";
-import { DropIcon } from "@/Components/utils/DropIcon";
+import { MiniRecord } from "@/components/Modal/ModalExpense";
+import { DropIcon } from "@/components/utils/DropIcon";
 import react from "react";
+import { ModalCategory } from "@/components/Modal/ModalCategory";
 const records = () => {
   const [showModal, setModal] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
   return (
     <Fragment>
       <div>
@@ -21,7 +23,7 @@ const records = () => {
                 <h1 className=" text-xl">Records</h1>
                 <button
                   onClick={() => setModal(true)}
-                  className="btn btn-primary "
+                  className="btn  bg-indigo-500 shadow-lg shadow-indigo-500/50  "
                 >
                   + Add
                 </button>
@@ -116,10 +118,13 @@ const records = () => {
                     <img src="arrow-right.svg" alt="" width={20} />
                   </div>
                   <div className="flex justify-between">
-                    <div className="flex gap-3">
+                    <button
+                      onClick={() => setShowCategory(true)}
+                      className="btn bg-indigo-500 shadow-lg shadow-indigo-500/50  flex gap-3 items-center w-full justify-start"
+                    >
                       <img src="plus.svg" width={20} alt="" />
-                      <button>Add Category</button>
-                    </div>
+                      Add Category
+                    </button>
                   </div>
                 </div>
               </div>
@@ -187,9 +192,6 @@ const records = () => {
                 <RecordsWithBg />
                 <RecordsWithBg />
                 <RecordsWithBg />
-                <RecordsWithBg />
-                <RecordsWithBg />
-                <RecordsWithBg />
               </div>
             </div>
           </div>
@@ -199,6 +201,10 @@ const records = () => {
         invisible={showModal}
         onClose={() => setModal(false)}
       ></MiniRecord>
+      <ModalCategory
+        showCategory={showCategory}
+        onCloses={() => setShowCategory(false)}
+      ></ModalCategory>
     </Fragment>
   );
 };

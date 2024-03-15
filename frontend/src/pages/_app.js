@@ -1,4 +1,4 @@
-import { ContextProvider } from "@/Components/utils/context";
+import { ContextProvider } from "@/components/utils/context";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {

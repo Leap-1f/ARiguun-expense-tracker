@@ -1,4 +1,4 @@
-import { LogoAndNAme } from "@/Components/Layouts/LogoAndName";
+import { LogoAndNAme } from "@/components/Layouts/LogoAndName";
 import Link from "next/link";
 
 const balance = () => {

@@ -18,7 +18,7 @@
     "react-dom": "^18",
     "react-icon": "^1.0.0",
     "react-icons": "^5.0.1",
-    "vercel": "^33.5.3"
+    "vercel": "^33.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

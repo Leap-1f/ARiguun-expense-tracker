@@ -1,14 +1,18 @@
-export const ModalCategory = () => {
+import { useState } from "react";
+import { DropIcon } from "../utils/DropIcon";
+export const ModalCategory = ({ showCategory, onCloses }) => {
+  if (!showCategory) return null;
+
   return (
-    <div className="w-screem h-screen bg-black opacity-25 flex justify-center items-center">
-      <div className="w-[449px]  bg-[#191b1d] rounded-xl">
+    <div className=" fixed inset-0 bg-black    w-screem h-screen bg-opacity-80 flex justify-center items-center">
+      <div className="w-[449px] bg-[#191b1d]  rounded-xl">
         <div className="p-[20px] border-b-2 flex justify-between">
           <p>Add category</p>
-          <p>X</p>
+          <p onClick={onCloses}>X</p>
         </div>
         <div className="p-[20px] flex flex-col gap-4">
           <div className="flex gap-3 justify-between">
-            <div className="w-[20%] bg-[#1d232a] py-1 px-2 rounded-lg">a</div>
+            <DropIcon></DropIcon>
             <select className="select select-bordered w-[90%] max-w-xs">
               <option disabled selected>
                 Name{" "}

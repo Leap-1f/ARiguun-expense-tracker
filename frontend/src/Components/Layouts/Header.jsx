@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Fragment, useContext, useState } from "react";
-import { Contex } from "../utils/context";
+import { Context } from "../utils/context";
 import { MiniRecord } from "../Modal/ModalExpense";
 export const Header = ({ modalExpense, setModalExprense }) => {
   const handleOpenExpenseModal = () => {
@@ -51,7 +51,7 @@ export const Header = ({ modalExpense, setModalExprense }) => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <Link href={"login"}>Logout</Link>
             </li>
           </ul>
         </div>

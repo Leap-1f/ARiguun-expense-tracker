@@ -1,4 +1,4 @@
-import { LogoAndNAme } from "@/Components/Layouts/LogoAndName";
+import { LogoAndNAme } from "@/components/Layouts/LogoAndName";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -19,12 +19,6 @@ const Login = () => {
         },
         body: JSON.stringify({ email }),
       });
-
-      if (res.ok) {
-        router.push("http://localhost:3000/loading");
-      } else {
-        console.log("Login failed");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -90,12 +84,13 @@ const Login = () => {
                 value={password}
               />
             </label>
-            <button
+            <Link
+              href={"/loading"}
               onClick={loginGo}
               className="btn bg-[#3b82f6] border-none text-white rounded-full h-[70px] font-normal text-xl"
             >
               Log in
-            </button>
+            </Link>
           </div>
           <div className="flex gap-2 items-center">
             <p className="text-black">Don't have an account?</p>
