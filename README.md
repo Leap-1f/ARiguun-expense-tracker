@@ -1,1 +1,1 @@
-Frontend url - https://expense-tracker-front-end-mu.vercel.app/
+Frontend url - https://frontend-seven-ivory-14.vercel.app/

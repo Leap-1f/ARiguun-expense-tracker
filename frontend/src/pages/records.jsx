@@ -47,27 +47,15 @@ const records = () => {
                 <p>Types</p>
                 <div className="flex flex-col gap-3 px-5">
                   <div className="flex gap-4">
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox"
-                    ></input>
+                    <input type="checkbox" className="checkbox"></input>
                     <p>All</p>
                   </div>
                   <div className="flex gap-4">
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox"
-                    ></input>
+                    <input type="checkbox" className="checkbox"></input>
                     <p>Income</p>
                   </div>
                   <div className="flex gap-4">
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox"
-                    ></input>
+                    <input type="checkbox" className="checkbox"></input>
                     <p>Expense</p>
                   </div>
                 </div>
